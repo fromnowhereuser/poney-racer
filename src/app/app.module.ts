@@ -9,6 +9,7 @@ import { ErrorComponent } from './common/error/error.component';
 
 // angular material
 import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { RoutingModule } from './routing/routing.module';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { RoutingModule } from './routing/routing.module';
     RoutingModule,
 
     //mat
-    MatMenuModule
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
