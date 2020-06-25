@@ -12,6 +12,8 @@ import { RacesListComponent } from './races-list/races-list.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
   ]
 })
 export class RaceModule { }

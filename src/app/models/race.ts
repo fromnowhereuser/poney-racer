@@ -1,2 +1,4 @@
-export class Race {
+export interface Race {
+    id: number;
+    name: string;
 }
