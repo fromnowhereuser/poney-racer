@@ -21,8 +21,7 @@ export const ROUTES: Routes = [
   {
     path: 'raceslist',
     component: RacesListComponent,
-    // canActivate: [AuthGuard],
-    // canActivateChild: [AuthGuard],
+    canActivate: [AuthGuard],
     resolve: {
       races: RacesResolver
     },
