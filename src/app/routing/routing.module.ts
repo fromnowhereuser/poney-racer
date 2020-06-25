@@ -5,17 +5,24 @@ import { LandingComponent } from '../common/landing/landing.component';
 import { RacesListComponent } from '../modules/race/races-list/races-list.component';
 import { AuthComponent } from '../modules/auth/auth/auth.component';
 import { ErrorComponent } from '../common/error/error.component';
+import { AuthGuard } from '../guards/auth.guard';
+import { RacesResolver } from '../modules/race/resolvers/races.resolver';
 
 
 export const ROUTES: Routes = [
   {
-    path: '', redirectTo:'landing', pathMatch:'full'
+    path: '', redirectTo: 'landing', pathMatch: 'full'
   },
   {
     path: 'landing', component: LandingComponent
   },
   {
-    path: 'raceslist', component: RacesListComponent
+    path: 'raceslist',
+    component: RacesListComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      races: RacesResolver
+    }
   },
   {
     path: 'auth', component: AuthComponent
