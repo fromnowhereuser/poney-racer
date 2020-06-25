@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Race } from 'src/app/models/race';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pr-race',
@@ -12,10 +13,14 @@ export class RaceComponent implements OnInit {
   public race: Race
 
   constructor(
-    
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+  }
+
+  public showDetails() {
+    this.router.navigate(['/raceslist', this.race.id])
   }
 
 }

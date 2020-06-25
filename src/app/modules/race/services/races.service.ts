@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Race } from 'src/app/models/race';
+import { switchMap, map, toArray, filter, find } from 'rxjs/operators';
 
 
 @Injectable({
@@ -16,6 +17,15 @@ export class RacesService {
     return this
       .http
       .get<Array<Race>>(this.url)
+  }
 
+  getRaceById(id: number): Observable<Race> {
+    return this
+      .http
+      .get<Array<Race>>(this.url)
+      .pipe(
+        switchMap(array => array),
+        find(race => race.id === id)
+      )
   }
 }

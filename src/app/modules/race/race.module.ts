@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RaceComponent } from './race/race.component';
 import { RacesListComponent } from './races-list/races-list.component';
+import { RaceDetailsComponent } from './race-details/race-details.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
     RaceComponent,
-    RacesListComponent
+    RacesListComponent,
+    RaceDetailsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
   ]

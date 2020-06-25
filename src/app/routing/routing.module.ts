@@ -7,6 +7,8 @@ import { AuthComponent } from '../modules/auth/auth/auth.component';
 import { ErrorComponent } from '../common/error/error.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { RacesResolver } from '../modules/race/resolvers/races.resolver';
+import { RaceDetailsComponent } from '../modules/race/race-details/race-details.component';
+import { RaceResolver } from '../modules/race/resolvers/race.resolver';
 
 
 export const ROUTES: Routes = [
@@ -20,9 +22,19 @@ export const ROUTES: Routes = [
     path: 'raceslist',
     component: RacesListComponent,
     // canActivate: [AuthGuard],
+    // canActivateChild: [AuthGuard],
     resolve: {
       races: RacesResolver
-    }
+    },
+    children: [
+      {
+        path: ':id',
+        component: RaceDetailsComponent,
+        resolve: {
+          race: RaceResolver
+        },
+      }
+    ]
   },
   {
     path: 'auth', component: AuthComponent
@@ -36,7 +48,9 @@ export const ROUTES: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, {
+      useHash: true,
+    })
   ],
   exports: [
     RouterModule
