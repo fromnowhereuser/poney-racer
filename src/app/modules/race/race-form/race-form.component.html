@@ -1,0 +1,14 @@
+<form (ngSubmit)="submit()" [formGroup]="raceForm">
+    <div>
+        <label>name</label><input name="name" type="text" formControlName="name" />
+
+        <div *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">name is required</div>
+        <div *ngIf="nameCtrl.dirty && nameCtrl.hasError('minlength')">name must be at least 4 chars</div>
+    </div>
+
+    <div>
+        <button [disabled]="raceForm.invalid" type="submit">
+            valid
+        </button>
+    </div>
+</form>
