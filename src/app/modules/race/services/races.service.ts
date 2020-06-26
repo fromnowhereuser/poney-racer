@@ -28,4 +28,15 @@ export class RacesService {
         find(race => race.id === id)
       )
   }
+
+  isRaceNameAvailable(name: string): Observable<boolean> {
+    return this
+      .http
+      .get<Array<Race>>(this.url)
+      .pipe(
+        switchMap(array => array),
+        find(race => race.name === name),
+        map((val: Race) => val === undefined)
+      );
+  }
 }
